@@ -29,7 +29,7 @@ class Gateway(Script):
     def install(self, env):
         import params
         Logger.info('Install discounts management service node')
-        temp_directory = '/tmp/gateway_rpm/'
+        temp_directory = '/tmp/gateway_rpm/'.rstrip(os.path.sep)
         rpm_file_name = os.path.basename(params.rpm_gs_location)
         Directory(temp_directory, action='delete')
         Directory(temp_directory, action='create')
