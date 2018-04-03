@@ -39,6 +39,7 @@ class Gateway(Script):
 
     def configure(self, env, upgrade_type=None, config_dir=None):
         import params
+        env.set_params(params)
         Logger.info("Create discounts management service environment file.")
         File('/etc/default/discounts-management-service',
              mode=0644,
