@@ -19,11 +19,10 @@ limitations under the License.
 """
 from __future__ import print_function
 
-import subprocess
-import sys
-import re
+import time
 
 from resource_management.core.resources.system import Execute
+from resource_management.core.exceptions import ExecutionFailed
 from resource_management.libraries.script import Script
 from resource_management.core.logger import Logger
 
@@ -31,10 +30,24 @@ class ServiceCheck(Script):
 
     def service_check(self, env):
         import params
+        check_url = 'http://localhost:{0}/'.format(params.gateway_http_port)
+        max_checks = 6
+        checks_done = 0
         env.set_params(params)
         Logger.info("Running gateway service check")
-        check_url = 'http://localhost:{0}/'.format(params.gateway_http_port)
-        Execute(('curl', '--fail', '--silent', check_url))
+        while True:
+            try:
+                Execute(('curl', '--fail', '--silent', check_url))
+                break
+            except ExecutionFailed as ex:
+                Logger.info('Service check failed: {0}'.format(ex.exception_message))
+                if checks_done < max_checks:
+                    checks_done += 1
+                    time.sleep(10)
+                else:
+                    raise ex
+            except:
+                raise
         Logger.info("Gateway service check successful")
         exit(0)
 
