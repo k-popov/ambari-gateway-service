@@ -29,12 +29,12 @@ class Gateway(Script):
     def install(self, env):
         import params
         Logger.info('Install discounts management service node')
-        temp_directory = '/tmp/gateway_rpm/'.rstrip(os.path.sep)
+        temp_directory = '/tmp/gateway_rpm/'
         rpm_file_name = os.path.basename(params.rpm_gs_location)
-        Directory(temp_directory, action='delete')
-        Directory(temp_directory, action='create')
-        Execute(command=('gsutil', 'cp', params.rpm_gs_location, temp_directory))
-        Execute(command=('rpm', '-ivh', os.path.join(temp_directory, rpm_file_name)))
+        Directory(temp_directory.rstrip(os.path.sep), action='delete')
+        Directory(temp_directory.rstrip(os.path.sep), action='create')
+        Execute(('gsutil', 'cp', params.rpm_gs_location, temp_directory))
+        Execute(('rpm', '-ivh', os.path.join(temp_directory, rpm_file_name)))
 
 
     def configure(self, env, upgrade_type=None, config_dir=None):
@@ -46,19 +46,19 @@ class Gateway(Script):
 
     def stop(self, env, upgrade_type=None):
         Logger.info('Stop gateway node')
-        Execute(command=('systemctl', 'stop', 'discounts-management-service'))
+        Execute(('systemctl', 'stop', 'discounts-management-service'))
 
     def start(self, env, upgrade_type=None):
         Logger.info('Start gateway node')
-        Execute(command=('systemctl', 'start', 'discounts-management-service'))
+        Execute(('systemctl', 'start', 'discounts-management-service'))
 
     def status(self, env):
         Logger.info('Status check gateway node')
-        Execute(command=('systemctl', 'status', 'discounts-management-service'))
+        Execute(('systemctl', 'status', 'discounts-management-service'))
 
     def restart(self, env):
         Logger.info('Restart gateway node')
-        Execute(command=('systemctl', 'restart', 'discounts-management-service'))
+        Execute(('systemctl', 'restart', 'discounts-management-service'))
 
 
 if __name__ == "__main__":
