@@ -31,7 +31,7 @@ class ServiceCheck(Script):
     def service_check(self, env):
         import params
         check_url = 'http://localhost:{0}/'.format(params.gateway_http_port)
-        max_checks = 6
+        max_checks = 18
         checks_done = 0
         env.set_params(params)
         Logger.info("Running gateway service check")
