@@ -35,6 +35,7 @@ class Gateway(Script):
         Directory(temp_directory.rstrip(os.path.sep), action='create')
         Execute(('gsutil', 'cp', params.rpm_gs_location, temp_directory))
         Execute(('rpm', '-ivh', os.path.join(temp_directory, rpm_file_name)))
+        self.configure(env)
 
 
     def configure(self, env, upgrade_type=None, config_dir=None):
@@ -51,7 +52,6 @@ class Gateway(Script):
 
     def start(self, env, upgrade_type=None):
         Logger.info('Start gateway node')
-        self.configure(env)
         Execute(('systemctl', 'start', 'discounts-management-service'))
 
     def status(self, env):
