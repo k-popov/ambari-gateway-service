@@ -30,3 +30,12 @@ def yamlify_variables(var) :
 config = Script.get_config()
 
 rpm_gs_location = config['configurations']['gateway-env']['rpm_gs_location']
+elastic_url = config['configurations']['gateway-env']['elastic_url']
+price_url = config['configurations']['gateway-env']['price_url']
+client_id = config['configurations']['gateway-env']['client_id']
+application_secret = config['configurations']['gateway-env']['application_secret']
+gateway_http_port = config['configurations']['gateway-env']['gateway_http_port']
+
+gateway_env_template = config['configurations']['gateway-env']['content']
+
+hostname = config['hostname']

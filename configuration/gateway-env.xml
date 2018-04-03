@@ -25,18 +25,47 @@
     <require-input>true</require-input>
     <description>Google storage location of gateway artifact</description>
   </property>
+  <property>
+    <name>elastic_url</name>
+    <value></value>
+    <require-input>true</require-input>
+    <description>URL to Elasticsearch service</description>
+  </property>
+  <property>
+    <name>price_url</name>
+    <value></value>
+    <require-input>true</require-input>
+    <description>URL to Price service</description>
+  </property>
+  <property>
+    <name>client_id</name>
+    <value></value>
+    <require-input>true</require-input>
+    <description>ClientID</description>
+  </property>
+  <property>
+    <name>application_secret</name>
+    <value></value>
+    <require-input>true</require-input>
+    <description>Application Secret</description>
+  </property>
+  <property>
+    <name>gateway_http_port</name>
+    <value>9090</value>
+    <require-input>true</require-input>
+    <description>TCP port for the discount service to listen on</description>
+  </property>
   <!-- gateway-env.sh -->
   <property>
     <name>content</name>
-    <description>This is the jinja template for gateway-env.sh file</description>
+    <description>This is the jinja template for /etc/default/discounts-management-service file</description>
     <value>
-#!/bin/bash
-
-# Set GATEWAY specific environment variables here.
-
-# The java implementation to use.
-export JAVA_HOME={{java64_home}}
-export PATH=$PATH:$JAVA_HOME/bin
+JAVA_OPTS = "-Dpidfile.path=/var/run/discounts-management-service/play.pid"
+ELASTIC_URL = {{elastic_url}}
+PRICE_URL = {{price_url}}
+CLIENT_ID = {{client_id}}
+APPLICATION_SECRET = "{{application_secret}}"
+GATEWAY_HTTP_PORT = {{gateway_http_port}}
     </value>
   </property>
 </configuration>

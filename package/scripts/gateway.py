@@ -19,7 +19,8 @@ limitations under the License.
 
 import os
 from resource_management.core import shell
-from resource_management.core.resources.system import Execute, ExecuteScript, Directory
+from resource_management.core.resources.system import Execute, Directory, File
+from resource_management.core.source import InlineTemplate
 from resource_management.libraries.script import Script
 from resource_management.core.logger import Logger
 
@@ -27,8 +28,7 @@ class Gateway(Script):
 
     def install(self, env):
         import params
-#        env.set_params(params)
-        Logger.info('Install gateway service node')
+        Logger.info('Install discounts management service node')
         temp_directory = '/tmp/gateway_rpm/'
         rpm_file_name = os.path.basename(params.rpm_gs_location)
         Directory(temp_directory, action='delete')
@@ -36,32 +36,29 @@ class Gateway(Script):
         Execute(command=('gsutil', 'cp', params.rpm_gs_location, temp_directory))
         Execute(command=('rpm', '-ivh', os.path.join(temp_directory, rpm_file_name)))
 
+
     def configure(self, env, upgrade_type=None, config_dir=None):
         import params
-        env.set_params(params)
-        Logger.info('Configure gateway node')
+        Logger.info("Create discounts management service environment file.")
+        File('/etc/default/discounts-management-service',
+             mode=0644,
+             content=InlineTemplate(params.gateway_env_template))
 
     def stop(self, env, upgrade_type=None):
-        import params
-        env.set_params(params)
         Logger.info('Stop gateway node')
+        Execute(command=('systemctl', 'stop', 'discounts-management-service')
 
     def start(self, env, upgrade_type=None):
-        import params
-        env.set_params(params)
         Logger.info('Start gateway node')
-        self.configure(env)
+        Execute(command=('systemctl', 'start', 'discounts-management-service')
 
     def status(self, env):
-        import params
-        env.set_params(params)
         Logger.info('Status check gateway node')
+        Execute(command=('systemctl', 'status', 'discounts-management-service')
 
     def restart(self, env):
-        import params
-        env.set_params(params)
         Logger.info('Restart gateway node')
-        self.configure(env)
+        Execute(command=('systemctl', 'restart', 'discounts-management-service')
 
 
 if __name__ == "__main__":
