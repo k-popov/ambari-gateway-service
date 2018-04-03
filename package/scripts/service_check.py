@@ -33,7 +33,7 @@ class ServiceCheck(Script):
         import params
         env.set_params(params)
         Logger.info("Running gateway service check")
-        check_url = 'http://{0}:{1}/'.format(params.hostname, params.gateway_http_port)
+        check_url = 'http://localhost:{1}/'.format(params.gateway_http_port)
         Execute(('curl', '--fail', '--silent', check_url))
         Logger.info("Gateway service check successful")
         exit(0)

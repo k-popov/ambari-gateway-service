@@ -37,5 +37,3 @@ application_secret = config['configurations']['gateway-env']['application_secret
 gateway_http_port = config['configurations']['gateway-env']['gateway_http_port']
 
 gateway_env_template = config['configurations']['gateway-env']['content']
-
-hostname = config['hostname']
