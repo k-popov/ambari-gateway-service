@@ -50,6 +50,7 @@ class Gateway(Script):
 
     def start(self, env, upgrade_type=None):
         Logger.info('Start gateway node')
+        self.configure(env)
         Execute(('systemctl', 'start', 'discounts-management-service'))
 
     def status(self, env):
