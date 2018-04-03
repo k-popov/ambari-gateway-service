@@ -46,19 +46,19 @@ class Gateway(Script):
 
     def stop(self, env, upgrade_type=None):
         Logger.info('Stop gateway node')
-        Execute(command=('systemctl', 'stop', 'discounts-management-service')
+        Execute(command=('systemctl', 'stop', 'discounts-management-service'))
 
     def start(self, env, upgrade_type=None):
         Logger.info('Start gateway node')
-        Execute(command=('systemctl', 'start', 'discounts-management-service')
+        Execute(command=('systemctl', 'start', 'discounts-management-service'))
 
     def status(self, env):
         Logger.info('Status check gateway node')
-        Execute(command=('systemctl', 'status', 'discounts-management-service')
+        Execute(command=('systemctl', 'status', 'discounts-management-service'))
 
     def restart(self, env):
         Logger.info('Restart gateway node')
-        Execute(command=('systemctl', 'restart', 'discounts-management-service')
+        Execute(command=('systemctl', 'restart', 'discounts-management-service'))
 
 
 if __name__ == "__main__":
