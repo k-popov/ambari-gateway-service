@@ -18,7 +18,7 @@
   limitations under the License.
 -->
 
-<configuration>
+<configuration xmlns:xi="http://www.w3.org/2001/XInclude" supports_final="true">
   <property>
     <name>rpm_gs_location</name>
     <value>gs://mlsandbox-gs-bucket/repository/gateway/discounts-management-service-1.0-1522737814674.noarch.rpm</value>
@@ -65,5 +65,8 @@ CLIENT_ID = {{client_id}}
 APPLICATION_SECRET = "{{application_secret}}"
 GATEWAY_HTTP_PORT = {{gateway_http_port}}
     </value>
+    <value-attributes>
+      <type>content</type>
+    </value-attributes>
   </property>
 </configuration>
