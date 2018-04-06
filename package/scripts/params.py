@@ -20,12 +20,6 @@ limitations under the License.
 
 from resource_management.libraries.script import Script
 
-def yamlify_variables(var) :
-  if isinstance(var, type(True)):
-    return str(var).lower()
-  else:
-    return var
-
 # server configurations
 config = Script.get_config()
 

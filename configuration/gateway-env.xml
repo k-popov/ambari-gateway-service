@@ -22,7 +22,6 @@
   <property>
     <name>rpm_gs_location</name>
     <value>gs://mlsandbox-gs-bucket/repository/gateway/discounts-management-service-1.0-1522737814674.noarch.rpm</value>
-    <require-input>true</require-input>
     <description>Google storage location of gateway artifact</description>
   </property>
   <property>
@@ -52,7 +51,6 @@
   <property>
     <name>gateway_http_port</name>
     <value>9090</value>
-    <require-input>true</require-input>
     <description>TCP port for the discount service to listen on</description>
   </property>
   <!-- gateway-env.sh -->
