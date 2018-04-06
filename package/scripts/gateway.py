@@ -48,21 +48,25 @@ class Gateway(Script):
              content=InlineTemplate(params.gateway_env_template))
 
     def stop(self, env, upgrade_type=None):
+        import params
         Logger.info('Stop gateway node')
         env.set_params(params)
         Execute(('systemctl', 'stop', 'discounts-management-service'))
 
     def start(self, env, upgrade_type=None):
+        import params
         Logger.info('Start gateway node')
         env.set_params(params)
         Execute(('systemctl', 'start', 'discounts-management-service'))
 
     def status(self, env):
+        import params
         Logger.info('Status check gateway node')
         env.set_params(params)
         Execute(('systemctl', 'status', 'discounts-management-service'))
 
     def restart(self, env):
+        import params
         Logger.info('Restart gateway node')
         env.set_params(params)
         Execute(('systemctl', 'restart', 'discounts-management-service'))
