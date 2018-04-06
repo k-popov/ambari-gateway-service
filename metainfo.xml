@@ -34,6 +34,13 @@
                         <scriptType>PYTHON</scriptType>
                         <timeout>600</timeout>
                     </commandScript>
+                    <configFiles>
+                        <configFile>
+                            <type>xml</type>
+                            <fileName>gateway-env.xml</fileName>
+                            <dictionaryName>gateway-env</dictionaryName>
+                        </configFile>
+                    </configFiles>
                 </component>
             </components>
             <osSpecifics>
