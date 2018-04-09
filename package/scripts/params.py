@@ -30,4 +30,7 @@ client_id = config['configurations']['gateway-env']['client_id']
 application_secret = config['configurations']['gateway-env']['application_secret']
 gateway_http_port = config['configurations']['gateway-env']['gateway_http_port']
 
+catalog_index = config['configurations']['gateway-env']['catalog_index']
+discounts_index = config['configurations']['gateway-env']['discounts_index']
+campaigns_index = config['configurations']['gateway-env']['campaigns_index']
 gateway_env_template = config['configurations']['gateway-env']['content']
