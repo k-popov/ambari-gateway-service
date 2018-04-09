@@ -35,7 +35,7 @@ class Gateway(Script):
         Directory(temp_directory.rstrip(os.path.sep), action='delete')
         Directory(temp_directory.rstrip(os.path.sep), action='create')
         Execute(('gsutil', 'cp', params.rpm_gs_location, temp_directory))
-        Execute(('rpm', '-ivh', os.path.join(temp_directory, rpm_file_name)))
+        Execute(('rpm', '-Uvh', os.path.join(temp_directory, rpm_file_name)))
         self.configure(env)
 
 
