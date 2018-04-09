@@ -21,7 +21,7 @@
 <configuration xmlns:xi="http://www.w3.org/2001/XInclude" supports_final="true">
   <property>
     <name>rpm_gs_location</name>
-    <value>gs://mlsandbox-gs-bucket/repository/gateway/discounts-management-service-1.0-1522737814674.noarch.rpm</value>
+    <value>gs://mlsandbox-gs-bucket/repository/gateway/discounts-management-service-1.0-1523287077368.noarch.rpm</value>
     <require-input>true</require-input>
     <description>Google storage location of gateway artifact</description>
   </property>
@@ -55,6 +55,24 @@
     <require-input>true</require-input>
     <description>TCP port for the discount service to listen on</description>
   </property>
+  <property>
+    <name>catalog_index</name>
+    <value>priced_catalog_matching/row</value>
+    <require-input>true</require-input>
+    <description>Catalog index</description>
+  </property>
+  <property>
+    <name>discounts_index</name>
+    <value>discounts_matching/_doc</value>
+    <require-input>true</require-input>
+    <description>Discounts index</description>
+  </property>
+  <property>
+    <name>campaigns_index</name>
+    <value>campaigns/_doc</value>
+    <require-input>true</require-input>
+    <description>Campaigns index</description>
+  </property>
   <!-- gateway-env.sh -->
   <property>
     <name>content</name>
@@ -66,6 +84,9 @@ PRICE_URL = {{price_url}}
 CLIENT_ID = {{client_id}}
 APPLICATION_SECRET = "{{application_secret}}"
 GATEWAY_HTTP_PORT = {{gateway_http_port}}
+CATALOG_INDEX = {{catalog_index}}
+DISCOUNTS_INDEX = {{discounts_index}}
+CAMPAIGNS_INDEX = {{campaigns_index}}
     </value>
     <value-attributes>
       <type>content</type>
