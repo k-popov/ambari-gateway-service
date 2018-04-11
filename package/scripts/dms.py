@@ -24,13 +24,13 @@ from resource_management.core.source import InlineTemplate
 from resource_management.libraries.script import Script
 from resource_management.core.logger import Logger
 
-class Gateway(Script):
+class Dms(Script):
 
     def install(self, env):
         import params
         Logger.info('Install discounts management service node')
         env.set_params(params)
-        temp_directory = '/tmp/gateway_rpm/'
+        temp_directory = '/tmp/dms_rpm/'
         rpm_file_name = os.path.basename(params.rpm_gs_location)
         Directory(temp_directory.rstrip(os.path.sep), action='delete')
         Directory(temp_directory.rstrip(os.path.sep), action='create')
@@ -49,28 +49,28 @@ class Gateway(Script):
 
     def stop(self, env, upgrade_type=None):
         import params
-        Logger.info('Stop gateway node')
+        Logger.info('Stop DMS')
         env.set_params(params)
         Execute(('systemctl', 'stop', 'discounts-management-service'))
 
     def start(self, env, upgrade_type=None):
         import params
-        Logger.info('Start gateway node')
+        Logger.info('Start DMS')
         env.set_params(params)
         Execute(('systemctl', 'start', 'discounts-management-service'))
 
     def status(self, env):
         import params
-        Logger.info('Status check gateway node')
+        Logger.info('Status check DMS')
         env.set_params(params)
         Execute(('systemctl', 'status', 'discounts-management-service'))
 
     def restart(self, env):
         import params
-        Logger.info('Restart gateway node')
+        Logger.info('Restart DMS')
         env.set_params(params)
         Execute(('systemctl', 'restart', 'discounts-management-service'))
 
 
 if __name__ == "__main__":
-    Gateway().execute()
+    Dms().execute()

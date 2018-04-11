@@ -34,7 +34,7 @@ class ServiceCheck(Script):
         max_checks = 18
         checks_done = 0
         env.set_params(params)
-        Logger.info("Running gateway service check")
+        Logger.info("Running DMS check")
         while True:
             try:
                 Execute(('curl', '--fail', '--silent', check_url))
@@ -48,7 +48,7 @@ class ServiceCheck(Script):
                     raise ex
             except:
                 raise
-        Logger.info("Gateway service check successful")
+        Logger.info("DMS check successful")
         exit(0)
 
 if __name__ == "__main__":

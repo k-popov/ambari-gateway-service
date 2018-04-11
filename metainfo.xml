@@ -19,26 +19,26 @@
     <schemaVersion>2.0</schemaVersion>
     <services>
         <service>
-            <name>GATEWAY</name>
-            <displayName>Gateway service</displayName>
-            <comment>Provides gateway into parallel universe</comment>
+            <name>DMS</name>
+            <displayName>Discounts management service</displayName>
+            <comment>Provides discounts management service</comment>
             <version>1.0.0</version>
             <components>
                 <component>
-                    <name>GATEWAY</name>
-                    <displayName>Gateway service</displayName>
+                    <name>DMS_MASTER</name>
+                    <displayName>Discounts management service</displayName>
                     <category>MASTER</category>
                     <cardinality>1</cardinality>
                     <commandScript>
-                        <script>scripts/gateway.py</script>
+                        <script>scripts/dms.py</script>
                         <scriptType>PYTHON</scriptType>
                         <timeout>600</timeout>
                     </commandScript>
                     <configFiles>
                         <configFile>
                             <type>xml</type>
-                            <fileName>gateway-env.xml</fileName>
-                            <dictionaryName>gateway-env</dictionaryName>
+                            <fileName>dms-env.xml</fileName>
+                            <dictionaryName>dms-env</dictionaryName>
                         </configFile>
                     </configFiles>
                 </component>
@@ -54,7 +54,7 @@
                 <timeout>300</timeout>
             </commandScript>
             <configuration-dependencies>
-                <config-type>gateway-env</config-type>
+                <config-type>dms-env</config-type>
             </configuration-dependencies>
             <restartRequiredAfterChange>true</restartRequiredAfterChange>
         </service>
